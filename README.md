@@ -34,7 +34,7 @@
 **Game Instructions**
 - Each player will first place the 5 ships on their game board. Each player's game board is hidden from each other.
 - Players alternate turns to call out a row alphabet and column number. 
-- If the row alphabet and column number correspond to a space occupied by a ship, the opponent has to reveal to the attacking player that it is a hit; otherwise; the opponent has to reveal that it is a miss.
+- If the row alphabet and column number correspond to a space occupied by a ship, the opponent has to reveal to the attacking player that it is a hit; otherwise, the opponent has to reveal that it is a miss.
 - The results of hit or miss is recorded using X and O respectively on the recording board by the attacking player.
 - Once all the spaces occupied by the ships is marked with a hit (X), the opponent's ship is sunk.
 - The first player to sink all 5 ships of the opponent will win the game.
