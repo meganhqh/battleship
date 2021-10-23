@@ -10,9 +10,9 @@
 
 **Game Setup**
 - The game is played by 2 players, the computer and player.
-- Each player 2 boards: Game Board & Recording Board
+- Each player has 2 boards: Game Board & Recording Board
   - Game Board - place the ships
-  - Recording Board - record if the guess is a hit or miss
+  - Recording Board - show if the guess is a hit or miss
 - Each board size is a 6x6 grid (6 rows and 6 columns). Rows are denoted by numbers and columns are denoted by alphabets.
 
 **Game Board**
