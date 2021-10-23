@@ -16,6 +16,24 @@
 | --- | A | B | C | D | E | F | G | H | I | J |
 | 1 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | 
 
+| First Header  | Second Header |
+| ------------- | ------------- |
+| Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  |
+  
+  |---------------------------------------|
+1 | 
+2 |
+3 |
+4 |
+5 |
+6 |
+7 |
+8 |
+9 |
+10|
+
+
 
 
 -There are 5 ships for each player to place on the board. Each ship occupy different number of spaces on the board. Carriers, battleships, cruisers, submarines, and destroyers occupy 5 spaces, 4 spaces, 3 spaces and 2 spaces respectively.
