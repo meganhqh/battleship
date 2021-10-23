@@ -6,7 +6,7 @@
 - Ho Megan Qian Hua (3035832749)
 
 **Game Description**
-The game is called Battleship, where players will place a number of ships on their own grid and the locations of the ships are hidden from each other. Players will take turns to guess the position of the opponent's ship. The first player to guess all positions correctly will win the game.
+- The game is called Battleship, where players will place a number of ships on their own grid and the locations of the ships are hidden from each other. Players will take turns to guess the position of the opponent's ship. The first player to guess all positions correctly will win the game.
 
 **Game Setup**
 - The game is played by 2 players, the computer and player.
