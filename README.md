@@ -16,8 +16,8 @@
 | --- | A | B | C | D | E | F | G | H | I | J |
 | 1 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | 
 
-| First Header  | Second Header |
-| ------------- | ------------- |
+| --- | A | B | C | D | E | F | G | H | I | J |
+| --- | --- |
 | Content Cell  | Content Cell  |
 | Content Cell  | Content Cell  |
   
