@@ -9,9 +9,9 @@
 - Battleship
 
 **Game Setup**
--The game is played by 2 players, the computer and player A.
--Each player has a game board, which is a board for players to place their ships, and a recording board, which is a board for the attacking player to record if their guess is a hit or miss.
--Each board size is a 10x10 grid (10 rows and 10 columns). Rows are denoted by alphabets and columns are denoted by numbers.
+- The game is played by 2 players, the computer and player A.
+- Each player has a game board, which is a board for players to place their ships, and a recording board, which is a board for the attacking player to record if their guess is a hit or miss.
+- Each board size is a 10x10 grid (10 rows and 10 columns). Rows are denoted by alphabets and columns are denoted by numbers.
 
 | --- | A | B | C | D | E | F | G | H | I | J |
 | 1 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | 
