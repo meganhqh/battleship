@@ -59,9 +59,9 @@
   - Medium = 2
     - Placement move
       -  Ship placement is set with 3 strict rules:
-        -   Do not place the ships touching to each other
-        -   Place the ships asymmetrically
-        -   Place at least one or two ships at the edge of the game board
+        -  Do not place the ships touching to each other
+        -  Place the ships asymmetrically
+        -  Place at least one or two ships at the edge of the game board
     - Hitting move
       -  Ship hitting is completely random
   - Hard = 3
