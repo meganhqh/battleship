@@ -39,52 +39,50 @@
 - There are 3 ships for player to place on the board. Each ship occupies different number of spaces with battleships, cruisers and submarines occupying 3 spaces, 3 spaces and 2 spaces respectively.
 
 **Game Rules**
+- Player will first place the 3 ships on the game board by inputting the row and column.
 - Ships can only be placed vertically and horizontally, but not diagonally or overlapping with each other.
-
-**Game Instructions**
-- Player will first place the 3 ships on the game board. Player's and computer's game board is hidden from each other.
-- Players alternate turns to call out a row number and column alphabet.
-- If the row alphabet and column number correspond to a space occupied by a ship, the opponent has to reveal to the attacking player that it is a hit; otherwise, the opponent has to reveal that it is a miss.
-- The results of hit or miss is recorded using X and O respectively on the recording board by the attacking player.
-- Once all the spaces occupied by the ships is marked with a hit (X), the opponent's ship is sunk.
-- The first player to sink all 5 ships of the opponent will win the game.
+- "Invalid input" prints out if player fails to place the ship correctly by violating the rules.
+- Player's and computer's game board is hidden from each other.
+- Player and computer alternate turns to call out a row number and column alphabet.
+- If the row number and column alphabet correspond to a space occupy by a ship, the specific coordinate on the recording board will be a 'X'(hit); otherwise, '0'(miss).
+- Once all coordinates occupy by the ship are guessed correctly, the ship is sunk.
+- The first player to sink all 3 ships of the opponent will win the game.
 
 **Available Features**
-
 1. Generation of random game sets or events
-- There are 3 difficulty levels for both computer's placement and hitting moves
+- Player can choose one of the 3 difficulty levels which are based on computer's placement and hitting moves
   - Easy = 1
     - Placement move  
-      -  ship placement is completely random on the game board
+      -  Ship placement is completely random on the game board
     - Hitting move
-      -  ship hitting is completely random
+      -  Ship hitting is completely random
   - Medium = 2
     - Placement move
-      -  ship placement is set with 3 strict rules:
+      -  Ship placement is set with 3 strict rules:
         -   Do not place the ships touching to each other
         -   Place the ships asymmetrically
         -   Place at least one or two ships at the edge of the game board
     - Hitting move
-      -  ship hitting is completely random
+      -  Ship hitting is completely random
   - Hard = 3
     - Placement move
-      -  ship placement is set with 3 strict rules:
+      -  Ship placement is set with 3 strict rules:
         -   Do not place the ships touching to each other
         -   Place the ships asymmetrically
         -   Place at least one or two ships at the edge of the game board
     - Hitting move
-      -  ship hitting is determined by hunt (with parity) and target algorithm
+      -  Ship hitting is determined by hunt (with parity) and target algorithm
 
 2. Data structures for storing game status
-- int data types is used to store difficulty level chosen by the player, input row by player and etc.
-- string data types is used to store input column by player and etc
-- boolean data types is used to check the ship placement of the opponent's game board and identify whether it is a hit or miss
-- dynamic array are used to store the player's and computer's ship placement and the latest hitting moves
+- Int data types is used to store difficulty level chosen by the player, input row number by player and etc
+- String data types is used to store input column alphabet by player and etc
+- Boolean data types is used to check the ship placement of the opponent's game board and identify whether it is a hit or miss
+- Dynamic array are used to store the player's and computer's ship placement and the latest hitting moves
 
 3. Dynamic memory management
-- in the beginning, the dynamic array of the gaming board and recording board are empty
-- after players have done their ship placement, the dynamic array of the gaming board is updated
-- the dynamic array of the recording board will be updated based on the attacking player move by referring to the ship placement in the dynamic array of the gaming board
+- In the beginning, the dynamic array of the gaming board and recording board are empty
+- After player and computer have done their ship placement, the dynamic array of the game board is updated
+- The dynamic array of the attacking player's recording board will be updated  by referring to the opponent's ship placement in the game board
 
 4. File input/output
 - The player can choose to quit at any time. The current status of the entire game will be saved into several files tracking both game and recording board.
@@ -92,15 +90,14 @@
 
 5. Program codes in multiple files
 - The program is divided into multiple functions and stored into different files.
-- The programs involve in our text-based game
-  - save and load files
+- The programs involve in our text-based game:
+  - draw player's game and recording board 
+  - input the player's ship placement and hitting moves
   - determine the computer's ship placement and hitting moves
-  - draw player's gaming and recording board
+  - determine the winning player
   - control the game flow
-  - determining the winning player
-  - inputting the player's ship placement
-  - inputting the player's hitting moves
-- Makefile is used to generate the program from all the files that are needed for the game
+  - save and load files
+- Makefile is used to generate the program from all the files that are needed for our game
 
 
 
