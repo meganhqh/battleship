@@ -39,7 +39,7 @@
 - There are 3 ships for player to place on the board. Each ship occupies different number of spaces with battleships, cruisers and submarines occupying 3 spaces, 3 spaces and 2 spaces respectively.
 
 **Game Rules**
-- Player will first place the 3 ships on the game board by inputting the row and column.
+- Player will first place the 3 ships on the game board by inputting the row number and column alphabet.
 - Ships can only be placed vertically and horizontally, but not diagonally or overlapping with each other.
 - "Invalid input" prints out if player fails to place the ship correctly by violating the rules.
 - Player's and computer's game board is hidden from each other.
