@@ -125,7 +125,7 @@ int SetShips(int difficulty, int indicator, int load, int &quit){
 
   // if user decides to continue previous game
   if (load == 1) {
-    load_file(quit_sequence, difficulty, start_player, indicator, ship_inputted, matrix, matrixComp, recording, recordingComp, ship_position, ship_positionComp, user_attack, comp_attack, count_user, comp_ship_left_last);
+    load_file(quit_sequence, difficulty, start_player, indicator, ship_inputted, matrix, matrixComp, recording, recordingComp, ship_position, ship_positionComp, user_attack, comp_attack, count_user, comp_ship_left_last, hunt, target_N, target_S, target_E, target_W);
     // cout << "Your ship placement board" << endl;
     // PrintBoard(matrix);
     load = 0;
@@ -146,7 +146,7 @@ int SetShips(int difficulty, int indicator, int load, int &quit){
     // user allocates 9 as row for ship position
     // asks if user decides to quit
     while(row == 9){
-      if (Quit(quit_sequence, difficulty, start_player, indicator, ship_inputted, matrix, matrixComp, recording, recordingComp, ship_position, ship_positionComp, user_attack, comp_attack, count_user, comp_ship_left_last) == true){
+      if (Quit(quit_sequence, difficulty, start_player, indicator, ship_inputted, matrix, matrixComp, recording, recordingComp, ship_position, ship_positionComp, user_attack, comp_attack, count_user, comp_ship_left_last, hunt, target_N, target_S, target_E, target_W) == true){
         quit =1;
         return 1;
       }
@@ -162,7 +162,7 @@ int SetShips(int difficulty, int indicator, int load, int &quit){
     // user allocates 9 as row or column for ship position
     // asks if user decides to quit
     while(row == 9 | column == 9){
-      if (Quit(quit_sequence, difficulty, start_player, indicator, ship_inputted, matrix, matrixComp, recording, recordingComp, ship_position, ship_positionComp, user_attack, comp_attack, count_user, comp_ship_left_last) == true){
+      if (Quit(quit_sequence, difficulty, start_player, indicator, ship_inputted, matrix, matrixComp, recording, recordingComp, ship_position, ship_positionComp, user_attack, comp_attack, count_user, comp_ship_left_last, hunt, target_N, target_S, target_E, target_W) == true){
         quit =1;
         return 1;
       }
@@ -183,7 +183,7 @@ int SetShips(int difficulty, int indicator, int load, int &quit){
     // asks if user decides to quit
     cout << endl;
     while(row == 9 | column == 9 | direction == '9'){
-      if (Quit(quit_sequence, difficulty, start_player, indicator, ship_inputted, matrix, matrixComp, recording, recordingComp, ship_position, ship_positionComp, user_attack, comp_attack, count_user, comp_ship_left_last) == true){
+      if (Quit(quit_sequence, difficulty, start_player, indicator, ship_inputted, matrix, matrixComp, recording, recordingComp, ship_position, ship_positionComp, user_attack, comp_attack, count_user, comp_ship_left_last, hunt, target_N, target_S, target_E, target_W) == true){
         quit =1;
         return 1;
       }
