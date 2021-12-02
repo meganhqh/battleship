@@ -15,7 +15,7 @@ using namespace std;
 // Input: difficulty level, indicator (player sequence), ship_inputted, quit sequence
 // Input: ships location board, recording board, previous attack positions
 // Input: number of times that user/ computer attacks
-void SaveFilePlacement(int quit_sequence, int difficulty, int start_player, int indicator, int ship_inputted, char matrix[6][6], char matrixComp[6][6], char recording[6][6], char recordingComp[6][6], string ship_position[3][3], string ship_positionComp[3][3], string *&user_attack, string *&comp_attack, int count_user, int comp_ship_left_last){
+void SaveFilePlacement(int quit_sequence, int difficulty, int start_player, int indicator, int ship_inputted, char matrix[6][6], char matrixComp[6][6], char recording[6][6], char recordingComp[6][6], string ship_position[3][3], string ship_positionComp[3][3], string *&user_attack, string *&comp_attack, int count_user, int comp_ship_left_last, bool hunt, bool target_N, bool target_S, bool target_E, bool target_W){
   ofstream fout;
   fout.open("savefile.txt");
   if (fout.fail()) {
@@ -63,7 +63,7 @@ void SaveFilePlacement(int quit_sequence, int difficulty, int start_player, int 
       fout << comp_attack[i] << " ";
     }
   }
-  fout << count_user << " " << comp_ship_left_last;
+  fout << count_user << " " << comp_ship_left_last << " " << hunt << " " << target_N << " " << target_S << " " << target_E << " " << target_W;
   fout.close();
 }
 
@@ -86,7 +86,7 @@ int load_test () {
 // Input: ships location board, recording board, previous attack positions
 // Input: number of times that user/ computer attacks
 // Output: modify all inputs based on savefile.txt
-void load_file (int &quit_sequence, int start_player, int &difficulty, int &indicator,  int &ship_inputted, char matrix[6][6], char matrixComp[6][6], char recording[6][6], char recordingComp[6][6], string ship_position[3][3], string ship_positionComp[3][3], string *&user_attack, string *&comp_attack, int &count_user, int &comp_ship_left_last) {
+void load_file (int &quit_sequence, int start_player, int &difficulty, int &indicator,  int &ship_inputted, char matrix[6][6], char matrixComp[6][6], char recording[6][6], char recordingComp[6][6], string ship_position[3][3], string ship_positionComp[3][3], string *&user_attack, string *&comp_attack, int &count_user, int &comp_ship_left_last, bool hunt, bool target_N, bool target_S, bool target_E, bool target_W) {
   string filename = "savefile.txt";
   ifstream fin;
   fin.open(filename);
@@ -132,7 +132,7 @@ void load_file (int &quit_sequence, int start_player, int &difficulty, int &indi
       fin >> b[i];
     }
   }
-  fin >> count_user >> comp_ship_left_last;
+  fin >> count_user >> comp_ship_left_last >> hunt >> target_N >> target_S >> target_E >> target_W;
   fin.close();
   delete []user_attack;
   delete []comp_attack;
