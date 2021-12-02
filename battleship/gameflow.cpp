@@ -89,7 +89,7 @@ void PrintBoard(char matrix[6][6]){
 }
 
 // Determine which player to attack first, changing indicator to even when player starts, otherwise odd
-// Input: indicator (store which player attack first)
+// Input: indicator 
 void print_player_sequence(int &indicator){
   int sequence;
   cout << endl << "Do you want to attack first?" << endl;
