@@ -6,72 +6,62 @@
 - Ho Megan Qian Hua (3035832749)
 
 **Game Description**
-- The game is called Battleship, where players will place a number of ships on their own grid and the locations of the ships are hidden from each other. Players will take turns to guess the position of the opponent's ship. The first player to guess all positions correctly will win the game.
+- The game is called Battleship. Players will place a number of ships on their own grid and the locations of the ships are hidden from each other. Players will take turns to guess the position of the opponent's ship. The first player to guess all positions correctly will win the game.
 
 **Game Setup**
 - The game is played by 2 players, the computer and player.
 - Each player has 2 boards: Game Board & Recording Board
   - Game Board - place the ships
   - Recording Board - show if the guess is a hit or miss
-- Each board size is a 6x6 grid (6 rows and 6 columns). Rows are denoted by numbers and columns are denoted by alphabets.
+- Each board size is a 6x6 grid (6 rows and 6 columns).
 
 **Game Board**
-|   | A | B | C | D | E | F |
+|   | 0 | 1 | 2 | 3 | 4 | 5 |
 | - | - | - | - | - | - | - |
-| 1 |   |   |   |   |   | * | 
-| 2 | * | * | * |   |   | * |
-| 3 |   |   |   |   |   | * |           
-| 4 |   |   |   |   |   |   |        
-| 5 |   |   |   | * | * |   |            
-| 6 |   |   |   |   |   |   |            
+| 0 | * | * | * | * | * | S | 
+| 1 | S | S | S | * | * | S |
+| 2 | * | * | * | * | * | S |           
+| 3 | * | * | * | * | * | * |        
+| 4 | * | * | S | S | S | * |            
+| 5 | * | * | * | * | * | * |            
 
 
 **Recording Board**
-|   | A | B | C | D | E | F |
+|   | 0 | 1 | 2 | 3 | 4 | 5 |
 | - | - | - | - | - | - | - |
-| 1 |   | 0 |   |   |   |   | 
-| 2 | X | X | X |   |   | X |
-| 3 |   | 0 |   |   | 0 | X |           
-| 4 | 0 | 0 |   |   | 0 | X |        
-| 5 |   |   |   | X | X |   |            
-| 6 |   |   |   |   | 0 |   |  
+| 0 | * | 0 | * | * | * | X | 
+| 1 | X | X | X | * | * | X |
+| 2 | * | 0 | * | * | 0 | X |           
+| 3 | 0 | 0 | * | * | 0 | * |        
+| 4 | * | * | X | X | X | * |            
+| 5 | * | * | * | * | 0 | * | 
   
-- There are 3 ships for player to place on the board. Each ship occupies different number of spaces with battleships, cruisers and submarines occupying 3 spaces, 3 spaces and 2 spaces respectively.
+- There are 3 ships for player to place on the board. Each ship occupies 3 spaces on the board.
 
 **Game Rules**
-- Player will first place the 3 ships on the game board by inputting the row number and column alphabet.
-- Ships can only be placed vertically and horizontally, but not diagonally or overlapping with each other.
-- "Invalid input" prints out if player fails to place the ship correctly by violating the rules.
-- Player's and computer's game board is hidden from each other.
-- Player and computer alternate turns to call out a row number and column alphabet.
-- If the row number and column alphabet correspond to a space occupy by a ship, the specific coordinate on the recording board will be a 'X'(hit); otherwise, '0'(miss).
+- Player will first place the 3 ships on the game board by inputting the row and column number of the first position of the ship, followed by the orientation (North, South, East, West) of the ship.
+- E.g. 1, 2, West means the first position of the ship have coordinate (1,2), the second and third position of the ship have coordinate (1,1) and (1,0) respectively.
+- Ships cannot be placed overlapping with each other.
+- The location of ships on the game board for both computer and player is hidden from each other.
+- After placing the ships, player and computer alternate turns to call out a row and column number.
+- If the row and column number correspond to a space occupy by a ship, the specific coordinate on the recording board will be a 'X'(hit); otherwise, '0'(miss).
 - Once all coordinates occupy by the ship are guessed correctly, the ship is sunk.
 - The first player to sink all 3 ships of the opponent will win the game.
 
 **Available Features**
 1. Generation of random game sets or events
-- Player can choose one of the 3 difficulty levels which are based on computer's placement and hitting moves
+- Player can choose one of the 2 difficulty levels which are based on computer's hitting moves
   - Easy = 1
     - Placement move  
-      -  Ship placement is completely random on the game board
+      -  Computer's ship placement is completely random 
     - Hitting move
-      -  Ship hitting is completely random
-  - Medium = 2
+      -  Computer's ship hitting is completely random throughout the game
+  - Hard = 2
     - Placement move
-      -  Ship placement is set with 3 strict rules:
-        -  Do not place the ships touching to each other
-        -  Place the ships asymmetrically
-        -  Place at least one or two ships at the edge of the game board
+      -  Computer's ship placement is completely random
     - Hitting move
-      -  Ship hitting is completely random
-  - Hard = 3
-    - Placement move
-      -  Ship placement is set with 3 strict rules:
-        -   Do not place the ships touching to each other
-        -   Place the ships asymmetrically
-        -   Place at least one or two ships at the edge of the game board
-    - Hitting move
-      -  Ship hitting is determined by hunt (with parity) and target algorithm
+      -  Computer first uses a random guess to find a hit, once there is a hit, it will use a "hunt and target" algorithm to find the remaining spaces occupy by a ship
+
 
 2. Data structures for storing game status
 - Int data types is used to store difficulty level chosen by the player, input row number by player and etc
@@ -100,7 +90,11 @@
 - Makefile is used to generate the program from all the files that are needed for our game
 
 
-
+Compilation and Execution
+- Download the makefile and the source files into a single folder. The commands are:
+- Compilation: make battleship
+- Execution: ./battleship
+- Removal: make clean
 
 
 
