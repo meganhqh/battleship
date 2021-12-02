@@ -56,7 +56,7 @@ int SetAttackDifficult(int difficulty, int indicator, int load, int &quit){
       PrintBoard(matrix);
       load = 0;
     }
-    // check whose turn to play7
+    // check whose turn to play
     if (indicator % 2 == 0){
       if (repeat == false){
         cout << "Your Recording Board" << endl;
@@ -118,7 +118,7 @@ int SetAttackDifficult(int difficulty, int indicator, int load, int &quit){
           }
         }
 
-        // No duplicates of input attack position
+        // If no duplicates of input attack position
         if (duplicate == 0){
           repeat = false;
           attack_num++;
@@ -127,11 +127,11 @@ int SetAttackDifficult(int difficulty, int indicator, int load, int &quit){
             grow_attack_position(user_attack, user_attack_size, 3);
           }
 
-          //write attack position in the dynamic array, and also call AttackShips function which checks if the attack is a hit or miss and prints out the recording board
+          //write attack position in the dynamic array
           user_attack[count_user] = pos;
+          //call AttackShips function which checks if the attack is a hit or miss and prints out the recording board
           AttackShips(row, column, indicator);
-          
-          //call CheckWinner function which determines the number of ships stil standing in the opponent's board and also determine a winner (whoever makes opponent's ship count go to zero first).
+          //call CheckWinner function which determines the number of ships left in opponent's board and also determine a winner (whoever makes opponent's ship count go to zero first).
           comp_ship_left_last = CheckWinner(pos, indicator);
           
           //if winner could be determined, the loop breaks and will stop inputting an attacking position.
