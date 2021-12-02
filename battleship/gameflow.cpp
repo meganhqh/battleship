@@ -44,6 +44,8 @@ void print_instructions () {
   cout << "4) Each player will first place 3 ships on their own game board. Each ship occupies 3 spaces on the board." << endl;
   cout << "5) Player will place the ships by inputting the row and column number of the first position of the ship, " << endl;
   cout << "   followed by the orientation (North, South, East and West) of the ship." << endl;
+  cout << "   E.g. 1, 2, West means the first position of the ship have coordinate (1,2), the second and third position of the" << endl;
+  cout << "   ship have coordinate (1,1) and (1,0) respectively." << endl;
   cout << "6) Ships cannot be placed overlapping with each other." << endl;
   cout << "7) The location of ships on the game board for both computer and player is hidden from each other." << endl;
   cout << "8) After placing the ships, player and computer will alternate turns to call out a row and column number." << endl;
