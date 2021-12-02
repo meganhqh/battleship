@@ -1,6 +1,7 @@
 //attack_difficult.cpp
 //this program determines the attacking move if user select "difficult" level
 //in the difficult level, computer uses the "hunt and target" algorithm to sink the ships
+
 #include <iostream>
 #include <string>
 #include <algorithm>
@@ -30,6 +31,8 @@ bool CompTarget(int row, int column){
 }
 
 // Set the location to attack ships
+// Inputs: difficulty level, indicator to indicator whose turn it is, load to indicate if we are loading from load file, and quit to capture if user quits halfway
+// Output: return 1 if quit halfway, else return 0
 int SetAttackDifficult(int difficulty, int indicator, int load, int &quit){
   bool repeat = false;
   int row, column, x, y, temp_x, temp_y, size, attack_num = 0;
