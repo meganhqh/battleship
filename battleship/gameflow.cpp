@@ -11,10 +11,7 @@
 
 using namespace std;
 
-
-
-// Starting board at the most beginning
-// Initialise all the locations to * without any ship allocation
+// Initialise all the locations to * without any ship allocation for our ship placement and recording boards at the start
 void StartBoard(){
   for(int i=0; i < rows; i++){
     for(int j=0; j < columns; j++){
@@ -26,7 +23,7 @@ void StartBoard(){
   }
 }
 
-// Prints a horizontal divider to divide the instructions and game
+// Prints a horizontal divider
 void print_section_divider() {
   for (int i = 0; i < 120; i++ ) {
     cout << "=";
@@ -57,9 +54,8 @@ void print_instructions () {
   print_section_divider();
 }
 
-// Allows the player to choose difficulty level
+// Allows the player to choose difficulty level, modifying the level according to the chosen level through pass by reference
 // Input: difficulty level
-// Output: modify the level according to the chosen level
 void print_difficulty (int &difficulty) {
   cout << "Please select your difficulty:" << endl;
   cout << "1 - Easy" << endl;
@@ -74,11 +70,8 @@ void print_difficulty (int &difficulty) {
   system("clear");
 }
 
-
-
-// Print out the gameboard after ship allocation
-// Input: matrix for ship position
-// Output: gameboard with ship position
+// Print out our game and recording boards
+// Input: a 6x6 grid
 void PrintBoard(char matrix[6][6]){
   cout << "  ";
   for (int i = 0; i<6; i++){
@@ -95,9 +88,8 @@ void PrintBoard(char matrix[6][6]){
   cout << endl;
 }
 
-// Determine which player to attack first
-// Input: sequence
-// Output: indicator is even when player starts, otherwise odd
+// Determine which player to attack first, changing indicator to even when player starts, otherwise odd
+// Input: indicator (store which player attack first)
 void print_player_sequence(int &indicator){
   int sequence;
   cout << endl << "Do you want to attack first?" << endl;
@@ -120,21 +112,19 @@ void print_player_sequence(int &indicator){
   system("clear");
 }
 
-
+// To make the screen pause by having the player press enter to continue
 void pause(){
-   /* ... */
    cout<<"Press <enter> to continue:";
-   /* ensure that std::cin is ready for inputs */
+   // ensure that cin is ready for inputs
    cin.clear();
-   /* ignore any pressed key until the <enter> key (included) */
+   // ignore  pressed key until enter key
    cin.ignore(numeric_limits<streamsize>::max(), '\n');
 }
 
 
-// Check if there is ship at the opponent's board when attacking
-// 'O' for missing and 'X for successful hitting
+// Check if there is ship at the opponent's board when attacking, printing out it's a miss or it's a hit, and change position on recording board to 'O' for missing and 'X for successful hitting
 // Input: row, column and indicator (whose turn to play the game)
-// Output: user/ comp recording board with valid attacking position
+// Output: return true if computer hit, false otherwise and if user's turn
 bool AttackShips(int row, int column, int indicator){
   if (indicator % 2 == 0){
     // user's turn
@@ -150,8 +140,6 @@ bool AttackShips(int row, int column, int indicator){
       cout << "It's a miss." << endl;
       cout <<  endl;
     }
-    // cout << "User Recording Board" << endl;
-    //ShowRecording(row, column, indicator);
     return 0;
   }else{
     // computer's turn
@@ -178,25 +166,19 @@ bool AttackShips(int row, int column, int indicator){
 }
 
 
-
-// Grow array to store more attack position (dynamic array)
+// Grow array to store more attacking position (dynamic array)
 // Input: pointer, array size, number to grow
-// Output: new array with updated array size
 void grow_attack_position(string * &ap, int &ap_size, int n){
-	// create a new dynamic array with a new size = max_size + n
+	// create a new dynamic array with a new size = old size + n
 	string * ap_new = new string[ap_size + n];
-
 	// copy all the records from the original array to the new dynamic array
 	for (int i = 0; i < ap_size; i++){
 		ap_new[i] = ap[i];
 	}
-
-	// destroy the old dynamic array to free up the memory allocated to it
+	// destroy old dynamic array to free up the memory allocated to it
 	delete [] ap;
-
 	// assign the pointer to the new dynamic array to the pointer variable
 	ap = ap_new;
-
 	// update the size of the array
 	ap_size += n;
 }
