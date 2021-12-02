@@ -1,9 +1,10 @@
 //attack_difficult.cpp
 //this program determines the attacking move if user select "difficult" level
-//in the difficult level, computer uses the "hunt and target" algorithm to sink the ships
+//in the difficult level, computer first uses a random guess to find a hit, and once they find a hit, it will use a "hunt and target" algorithm to find the remaining spaces occupy by a ship
 
 #include <iostream>
 #include <string>
+#include <ctime>
 #include <algorithm>
 #include <vector>
 
@@ -31,7 +32,7 @@ bool CompTarget(int row, int column){
 }
 
 // Set the location to attack ships
-// Inputs: difficulty level, indicator to indicator whose turn it is, load to indicate if we are loading from load file, and quit to capture if user quits halfway
+// Inputs: difficulty level, indicator (whose turn to play the game), load (if we are loading from load file), and quit (to capture if user quits halfway)
 // Output: return 1 if quit halfway, else return 0
 int SetAttackDifficult(int difficulty, int indicator, int load, int &quit){
   bool repeat = false;
@@ -95,7 +96,7 @@ int SetAttackDifficult(int difficulty, int indicator, int load, int &quit){
         }
       }
 
-      // check if the input row and column is in the range
+      // check if the input row and column is in the valid range
       if (row < 0 || column < 0 || row > 5 || column > 5){
         incorrect = 1;
         repeat = true;
@@ -105,7 +106,7 @@ int SetAttackDifficult(int difficulty, int indicator, int load, int &quit){
         char r = row + '0';
         char c = column + '0';
         auto pos = string(1,r) + c;
-        // check if there are duplicates from the dynamic array
+        // check if there are duplicates from the dynamic array which stores all the attack positions
         for (int i = 0; i < count_user; i++){
           if (pos == user_attack[i]){
             duplicate++;
@@ -121,14 +122,19 @@ int SetAttackDifficult(int difficulty, int indicator, int load, int &quit){
         if (duplicate == 0){
           repeat = false;
           attack_num++;
-          // check if the number of user's attacks is larger than the array size
+          // check if the number of user's attacks is larger than the array size which stores all attack positions, and grow array if so
           if (count_user >= user_attack_size){
             grow_attack_position(user_attack, user_attack_size, 3);
           }
 
+          //write attack position in the dynamic array, and also call AttackShips function which checks if the attack is a hit or miss and prints out the recording board
           user_attack[count_user] = pos;
           AttackShips(row, column, indicator);
+          
+          //call CheckWinner function which determines the number of ships stil standing in the opponent's board and also determine a winner (whoever makes opponent's ship count go to zero first).
           comp_ship_left_last = CheckWinner(pos, indicator);
+          
+          //if winner could be determined, the loop breaks and will stop inputting an attacking position.
           if (winner == true){
             break;
           }
@@ -146,7 +152,7 @@ int SetAttackDifficult(int difficulty, int indicator, int load, int &quit){
         srand(time(NULL));
         x = rand() % rows;
         y = rand() % columns;
-        // conert to string to check if there are duplicates
+        // convert to string to check if there are duplicates
         char r = x + '0';
         char c = y + '0';
         auto pos1 = string(1,r) + c;
@@ -373,12 +379,15 @@ int SetAttackDifficult(int difficulty, int indicator, int load, int &quit){
         user_ship_left = 3;
       }
     }
+    
+    // clear the screen after two players have played their turn
     if(attack_num % 2 == 0 && duplicate_last == 0 && incorrect!= 1){
       string str;
       getline(cin, str);
       pause();
       system("clear");
     }
+    //print a section divider after one player has played their turn
     if(attack_num % 2 != 0 && duplicate_last == 0 && incorrect != 1){
       print_section_divider();
     }
