@@ -31,7 +31,7 @@ int SetAttack(int difficulty, int indicator, int load, int &quit){
     int duplicate_last = 0;
     int incorrect = 0;
     if (load == 1) {
-      load_file(quit_sequence, difficulty, start_player, indicator, ship_inputted, matrix, matrixComp, recording, recordingComp, ship_position, ship_positionComp, user_attack, comp_attack, count_user, comp_ship_left_last);
+      load_file(quit_sequence, difficulty, start_player, indicator, ship_inputted, matrix, matrixComp, recording, recordingComp, ship_position, ship_positionComp, user_attack, comp_attack, count_user, comp_ship_left_last, hunt, target_N, target_S, target_E, target_W);
       user_attack_size = count_user - (count_user % 3);
       comp_attack_size = count_comp - (count_comp % 3);
       // for (int i = 0; i < 6; i++){
@@ -59,7 +59,7 @@ int SetAttack(int difficulty, int indicator, int load, int &quit){
       cout << "Location: ";
       cin >> row;
       while(row == 9){
-        if (Quit(quit_sequence, difficulty, start_player, indicator, ship_inputted, matrix, matrixComp, recording, recordingComp, ship_position, ship_positionComp, user_attack, comp_attack, count_user, comp_ship_left_last) == true){
+        if (Quit(quit_sequence, difficulty, start_player, indicator, ship_inputted, matrix, matrixComp, recording, recordingComp, ship_position, ship_positionComp, user_attack, comp_attack, count_user, comp_ship_left_last, hunt, target_N, target_S, target_E, target_W) == true){
           quit =1;
           return 1;
         }
@@ -72,7 +72,7 @@ int SetAttack(int difficulty, int indicator, int load, int &quit){
       }
       cin >> column;
       while(column == 9){
-        if (Quit(quit_sequence, difficulty, start_player, indicator, ship_inputted, matrix, matrixComp, recording, recordingComp, ship_position, ship_positionComp, user_attack, comp_attack, count_user, comp_ship_left_last) == true){
+        if (Quit(quit_sequence, difficulty, start_player, indicator, ship_inputted, matrix, matrixComp, recording, recordingComp, ship_position, ship_positionComp, user_attack, comp_attack, count_user, comp_ship_left_last, hunt, taregt_N, target_S, target_E, target_W) == true){
           quit =1;
           return 1;
         }
