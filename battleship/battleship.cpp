@@ -104,6 +104,7 @@ int main(){
     if(load!= 1 | quit_sequence == 1){
     //set ship returns 1 if quit halfway
       if(SetShips(difficulty, indicator, load, quit) == 1){
+        system("clear");
         return 0;
       }
       cout << "Your game board" << endl;
@@ -168,7 +169,7 @@ int main(){
       play_again = 2;
     }
 
-     system("clear");
+    system("clear");
   }
 
   delete []user_attack;

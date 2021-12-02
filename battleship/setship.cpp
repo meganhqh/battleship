@@ -80,6 +80,7 @@ bool CheckError(int row, int column, char direction, int flag_user){
 }
 
 
+
 // Change the relevant input position to 'S' and store them in a dynamic array
 // Input: vlid ship input position and direction
 // Output: modify the gameboard according to the valid row, column and direction
@@ -116,6 +117,7 @@ void WriteShipPosition(char matrix[6][6], string ship_position[3][3],int ship_nu
   }
 }
 
+
 // Set the location of the ship at the early stage
 // Input: row, column and direction
 // Output: print out the gameboard for valid row, column and direction
@@ -125,7 +127,7 @@ int SetShips(int difficulty, int indicator, int load, int &quit){
 
   // if user decides to continue previous game
   if (load == 1) {
-    load_file(quit_sequence, difficulty, start_player, indicator, ship_inputted, matrix, matrixComp, recording, recordingComp, ship_position, ship_positionComp, user_attack, comp_attack, count_user, comp_ship_left_last, hunt, target_N, target_S, target_E, target_W);
+    load_file(quit_sequence, difficulty, start_player, indicator, ship_inputted, matrix, matrixComp, recording, recordingComp, ship_position, ship_positionComp, user_attack, comp_attack, count_user, comp_ship_left_last);
     // cout << "Your ship placement board" << endl;
     // PrintBoard(matrix);
     load = 0;
@@ -136,42 +138,42 @@ int SetShips(int difficulty, int indicator, int load, int &quit){
     char direction;
     cout << "Your game board" << endl;
     PrintBoard(matrix);
+    ship_inputted = i-1;
+
     cout << "Please input the location of the ships. ";
     cout << "[Select 9 to save or quit]" << endl;
     cout << "Ship " << i << ": ";
-    ship_inputted = i-1;
-
     cin >> row;
 
     // user allocates 9 as row for ship position
     // asks if user decides to quit
     while(row == 9){
-      if (Quit(quit_sequence, difficulty, start_player, indicator, ship_inputted, matrix, matrixComp, recording, recordingComp, ship_position, ship_positionComp, user_attack, comp_attack, count_user, comp_ship_left_last, hunt, target_N, target_S, target_E, target_W) == true){
-        quit =1;
-        return 1;
-      }
-      else{
-        cout << "Please input the location of the ships. ";
-        cout << "[Select 9 to save or quit]" << endl;
-        cout << "Ship " << i << ": ";
-        cin >> row;
-      }
+        if (Quit(quit_sequence, difficulty, start_player, indicator, ship_inputted, matrix, matrixComp, recording, recordingComp, ship_position, ship_positionComp, user_attack, comp_attack, count_user, comp_ship_left_last) == true){
+            quit =1;
+            return 1;
+        }
+        else{
+            cout << "Please input the location of the ships. ";
+            cout << "[Select 9 to save or quit]" << endl;
+            cout << "Ship " << i << ": ";
+            cin >> row;
+        }
     }
     // input column to place the ship
     cin >> column;
     // user allocates 9 as row or column for ship position
     // asks if user decides to quit
     while(row == 9 | column == 9){
-      if (Quit(quit_sequence, difficulty, start_player, indicator, ship_inputted, matrix, matrixComp, recording, recordingComp, ship_position, ship_positionComp, user_attack, comp_attack, count_user, comp_ship_left_last, hunt, target_N, target_S, target_E, target_W) == true){
-        quit =1;
-        return 1;
-      }
-      else{
-        cout << "Please input the location of the ship. ";
-        cout << "[Select 9 to save or quit]" << endl;
-        cout << "Ship " << i << ": ";
-        cin >> row >> column;
-      }
+        if (Quit(quit_sequence, difficulty, start_player, indicator, ship_inputted, matrix, matrixComp, recording, recordingComp, ship_position, ship_positionComp, user_attack, comp_attack, count_user, comp_ship_left_last) == true){
+            quit =1;
+            return 1;
+        }
+        else{
+            cout << "Please input the location of the ship. ";
+            cout << "[Select 9 to save or quit]" << endl;
+            cout << "Ship " << i << ": ";
+            cin >> row >> column;
+        }
     }
 
     // both row and column input is not equal to 9 (not quitting)
@@ -183,31 +185,89 @@ int SetShips(int difficulty, int indicator, int load, int &quit){
     // asks if user decides to quit
     cout << endl;
     while(row == 9 | column == 9 | direction == '9'){
-      if (Quit(quit_sequence, difficulty, start_player, indicator, ship_inputted, matrix, matrixComp, recording, recordingComp, ship_position, ship_positionComp, user_attack, comp_attack, count_user, comp_ship_left_last, hunt, target_N, target_S, target_E, target_W) == true){
-        quit =1;
-        return 1;
-      }
-      else{
-        cout << "Please input the location of the ship. ";
-        cout << "[Select 9 to save or quit]" << endl;
-        cout << "Ship " << i << ": ";
-        cin >> row >> column;
-        cout << "Please choose the direction to place the ship(N, S, E, W). ";
-        cout << "[Select 9 to save or quit]" << endl;
-        cout << "Direction: ";
-        cin >> direction;
-        cout << endl;
-      }
+        if (Quit(quit_sequence, difficulty, start_player, indicator, ship_inputted, matrix, matrixComp, recording, recordingComp, ship_position, ship_positionComp, user_attack, comp_attack, count_user, comp_ship_left_last) == true){
+            quit =1;
+            return 1;
+        }
+        else{
+            cout << "Please input the location of the ship. ";
+            cout << "[Select 9 to save or quit]" << endl;
+            cout << "Ship " << i << ": ";
+            cin >> row >> column;
+            cout << "Please choose the direction to place the ship(N, S, E, W). ";
+            cout << "[Select 9 to save or quit]" << endl;
+            cout << "Direction: ";
+            cin >> direction;
+            cout << endl;
+        }
     }
     // calls CheckError function to make sure the input row, column and direction are valid
     while ((CheckError(row, column, direction, flag_user) == false) || (error == 1)){
         error = 0;
-        cout << "Input error. Please input the location again: ";
+        cout << "Input error." << endl;
+
+        cout << "Please input the location of the ships. ";
         cout << "[Select 9 to save or quit]" << endl;
-        cout << "Ship " << i << ": "; cin >> row >> column;
-      
-        
-        cout << "Please choose the direction to place the ship(N, S, E, W): "; cin >> direction; cout << endl;
+        cout << "Ship " << i << ": ";
+        cin >> row;
+
+        // user allocates 9 as row for ship position
+        // asks if user decides to quit
+        while(row == 9){
+            if (Quit(quit_sequence, difficulty, start_player, indicator, ship_inputted, matrix, matrixComp, recording, recordingComp, ship_position, ship_positionComp, user_attack, comp_attack, count_user, comp_ship_left_last) == true){
+                quit =1;
+                return 1;
+            }
+            else{
+                cout << "Please input the location of the ships. ";
+                cout << "[Select 9 to save or quit]" << endl;
+                cout << "Ship " << i << ": ";
+                cin >> row;
+            }
+        }
+        // input column to place the ship
+        cin >> column;
+        // user allocates 9 as row or column for ship position
+        // asks if user decides to quit
+        while(row == 9 | column == 9){
+            if (Quit(quit_sequence, difficulty, start_player, indicator, ship_inputted, matrix, matrixComp, recording, recordingComp, ship_position, ship_positionComp, user_attack, comp_attack, count_user, comp_ship_left_last) == true){
+                quit =1;
+                return 1;
+            }
+            else{
+                cout << "Please input the location of the ship. ";
+                cout << "[Select 9 to save or quit]" << endl;
+                cout << "Ship " << i << ": ";
+                cin >> row >> column;
+            }
+        }
+
+        // both row and column input is not equal to 9 (not quitting)
+        cout << "Please choose the direction to place the ship(N, S, E, W). ";
+        cout << "[Select 9 to save or quit]" << endl;
+        cout << "Direction: ";
+        cin >> direction; // input director to place ship
+        // user allocates 9 as row or column or direction for ship position
+        // asks if user decides to quit
+        cout << endl;
+        while(row == 9 | column == 9 | direction == '9'){
+            if (Quit(quit_sequence, difficulty, start_player, indicator, ship_inputted, matrix, matrixComp, recording, recordingComp, ship_position, ship_positionComp, user_attack, comp_attack, count_user, comp_ship_left_last) == true){
+                quit =1;
+                return 1;
+            }
+            else{
+                cout << "Please input the location of the ship. ";
+                cout << "[Select 9 to save or quit]" << endl;
+                cout << "Ship " << i << ": ";
+                cin >> row >> column;
+                cout << "Please choose the direction to place the ship(N, S, E, W). ";
+                cout << "[Select 9 to save or quit]" << endl;
+                cout << "Direction: ";
+                cin >> direction;
+                cout << endl;
+            }
+        }
+
         CheckError(row, column, direction, flag_user);
         //check if there is a ship on own board
         // increase error by 1
