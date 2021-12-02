@@ -10,7 +10,7 @@
 using namespace std;
 
 // Quit function when user requests to quit by typing 9, allowing the user to save the file
-// Input: All variables to keep track of if we load the saved game later, such as at which point user quits, diffculty level, which player attacks first, the number of ships inputted, 
+// Input: All variables to keep track of if we load the saved game later, such as at which point user quits, diffculty level, whose turn, which player attacks first, the number of ships inputted, 
 // the user and computer game boards and recording boards, the ship placements arrays of user and computer, the attacking position arrays of user and computer,
 // number of attacks of user and computers, number of computer ships left, check for computer attacking positions
 // Output: return 1 if quit, 0 otherwise
