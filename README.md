@@ -64,29 +64,29 @@
 
 
 2. Data structures for storing game status
-- Int data types is used to store difficulty level chosen by the player, input row number by player and etc
-- String data types is used to store input column alphabet by player and etc
-- Boolean data types is used to check the ship placement of the opponent's game board and identify whether it is a hit or miss
-- Dynamic array are used to store the player's and computer's ship placement and the latest hitting moves
+- Static array is used to store computer and players game board and recording board. 
+- Static array is used to store the ship placement positions entered by player and computer, and a dynamic array is used to store the attacking positions by player and computer
+- Vectors ..........
+- Int data types is used to store difficulty level chosen by the player, input row and column number and etc
 
 3. Dynamic memory management
-- In the beginning, the dynamic array of the gaming board and recording board are empty
-- After player and computer have done their ship placement, the dynamic array of the game board is updated
-- The dynamic array of the attacking player's recording board will be updated  by referring to the opponent's ship placement in the game board
+- The number of attacking positions inputted during the game will depend on how fast there is a winner of the game, which we do not know initially. Thus, to record the attacking positions in an array, a dynamic array is used so that we could grow the dynamic array to store more attacking positions during the game.
 
 4. File input/output
-- The player can choose to quit at any time. The current status of the entire game will be saved into several files tracking both game and recording board.
-- Player can have the option to resume the last saved game or to start a new game in the beginning.
+- The player can choose to quit at any time, and can choose to save the file into a file called savefile.txt.
+- Player can have the option to resume the last saved game, or to start a new game in the beginning.
 
 5. Program codes in multiple files
 - The program is divided into multiple functions and stored into different files.
 - The programs involve in our text-based game:
-  - draw player's game and recording board 
-  - input the player's ship placement and hitting moves
-  - determine the computer's ship placement and hitting moves
-  - determine the winning player
-  - control the game flow
-  - save and load files
+  - battleship.cpp: Main function which manages the flow of the game
+  - gameflow.cpp: Manages other stages of the game flow, such as: initialise start board, printing instructions, asking player to choose difficulty    level, asking player to choose playing sequence, printing boards, having a pause on the screen, and etc
+  - setship.cpp: Determines the ship placement move of user and computer
+  - attack_easy.cpp: Determines the attacking move if user select "easy" level
+  - attack_difficult.cpp: Determines the attacking move if user select "difficult" level
+  - check_winner.cpp: Determines the number of ships left in opponent's board and hence determine a winner 
+  - save_load.cpp: For saving and loading game status
+  - quit.cpp: For allowing users to quit during the game
 - Makefile is used to generate the program from all the files that are needed for our game
 
 
