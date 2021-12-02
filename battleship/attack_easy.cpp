@@ -67,7 +67,7 @@ int SetAttack(int difficulty, int indicator, int load, int &quit){
       cin >> column;
       // check if user wants to quit with 9 in input column
       while(column == 9){
-        if (Quit(quit_sequence, difficulty, start_player, indicator, ship_inputted, matrix, matrixComp, recording, recordingComp, ship_position, ship_positionComp, user_attack, comp_attack, count_user,count_comp, comp_ship_left_last, hunt, taregt_N, target_S, target_E, target_W) == true){
+        if (Quit(quit_sequence, difficulty, start_player, indicator, ship_inputted, matrix, matrixComp, recording, recordingComp, ship_position, ship_positionComp, user_attack, comp_attack, count_user,count_comp, comp_ship_left_last, hunt, target_N, target_S, target_E, target_W) == true){
           quit =1;
           return 1;
         }
