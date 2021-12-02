@@ -26,7 +26,7 @@ int count_user = 0; // count the number of attacks by user
 int count_comp = 0; // count the number of attacks by computer
 int user_ship_left = 3; // count the number of user's ships left
 int comp_ship_left = 3; // count the number of computer's ships left
-int start_player;
+int start_player; //who starts the game
 bool winner = false; // check if there is a winner
 bool hunt = false; // check if computer attacks the ship position
 bool target_N = true; // check the north position when computer attacks
