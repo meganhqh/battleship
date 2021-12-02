@@ -202,8 +202,11 @@ int SetShips(int difficulty, int indicator, int load, int &quit){
     // calls CheckError function to make sure the input row, column and direction are valid
     while ((CheckError(row, column, direction, flag_user) == false) || (error == 1)){
         error = 0;
-        cout << "Input error. Please input the location again: " << endl;
+        cout << "Input error. Please input the location again: ";
+        cout << "[Select 9 to save or quit]" << endl;
         cout << "Ship " << i << ": "; cin >> row >> column;
+      
+        
         cout << "Please choose the direction to place the ship(N, S, E, W): "; cin >> direction; cout << endl;
         CheckError(row, column, direction, flag_user);
         //check if there is a ship on own board
