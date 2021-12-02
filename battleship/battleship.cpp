@@ -20,8 +20,8 @@ const int rows = 6; // fix row for the gameboard
 const int columns = 6; // fix column for the gameboard
 char matrix[rows][columns]; // user's gameboard
 char matrixComp[rows][columns]; // computer's gameboard
-char recording[rows][columns]; // computer input location board
-char recordingComp[rows][columns]; // user input location board
+char recording[rows][columns]; // user input location board
+char recordingComp[rows][columns]; // computer input location board
 int count_user = 0; // count the number of attacks by user
 int count_comp = 0; // count the number of attacks by computer
 int user_ship_left = 3; // count the number of user's ships left
