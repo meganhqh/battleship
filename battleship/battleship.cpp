@@ -55,7 +55,6 @@ int main(){
   // start with making assumptions that the target surrounded by a succesful hunt position has a ship
   bool target_N = true, target_S = true, target_E = true, target_W = true;
   int count = 1; // to count the steps for computer attack
-  //
   int quit_sequence=0;
 
   while (play_again == 1) {
@@ -63,6 +62,7 @@ int main(){
     //print out instructions
     print_instructions();
     if (load_temp == 0) {
+      //Ask if player wants to load the saved file
       cout << "Do you want to load the saved file? " << endl;
       cout << "1 - Yes" << endl;
       cout << "2 - No" << endl;
@@ -75,8 +75,8 @@ int main(){
       load_temp = 1;
 
       if (load == 1) {
+        //load_test will return 0 if fail to run and 1 otherwise
         load = load_test();
-        //load_test return 0 if fail -> return 1 if not fail
         if (load == 1) {
           system("clear");
         }
@@ -85,14 +85,13 @@ int main(){
       }
     }
 
-    // Allows the player to choose difficulty
-    // Only runs if save file is not loaded
+    // If saved file not loaded, allow player to choose difficulty level and initialise start board
     if (load != 1) {
       print_difficulty(difficulty);
-      // Starts the main part of the game
       StartBoard();
     }
     else{
+      //otherwise, get the quit sequence (the place where user last quit, either during ship placement or attacking) and the difficulty level chosen by user in the saved round
       string filename = "savefile.txt";
       ifstream fin;
       fin.open(filename);
@@ -100,9 +99,9 @@ int main(){
       fin.close();
     }
 
-    //quit during set ship
-    if(load!= 1 | quit_sequence == 1){
-    //set ship returns 1 if quit halfway
+    // If saved file not loaded, or if they quit during ship placement, proceed to computer ship placement and ask player to choose if they want to attack first or not.
+    if(load!= 1 || quit_sequence == 1){
+      // Setships function returns 1 if quit during ship placement, so the main function will end here and rest of the code won't print out.
       if(SetShips(difficulty, indicator, load, quit) == 1){
         system("clear");
         return 0;
@@ -113,10 +112,9 @@ int main(){
       print_player_sequence(indicator);
     }
 
-
-    if (load!=1 | quit_sequence == 1| quit_sequence == 2){
+    // If saved file not loaded, or if they quit during ship placement/attacking, procced to attacking movements
+    if (load!=1 || quit_sequence == 1 || quit_sequence == 2){
       if(quit_sequence == 1){
-        //reset load back to 0
         load = 0;
       }
       if (difficulty == 1){
@@ -128,8 +126,7 @@ int main(){
 
     load = 2;
 
-    // Ask whether the user wants to play again
-    // If user saves and quit in the game_start function, exit immediately
+    // Ask whether the user wants to play again, if play again the loop repeats.
     if (quit != 1) {
       cout << endl << "Do you want to play again?" << endl;
       cout << "1 - Yes" << endl;
