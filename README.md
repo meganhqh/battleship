@@ -66,7 +66,7 @@
 2. Data structures for storing game status
 - Static array is used to store computer and players game board and recording board. 
 - Static array is used to store the ship placement positions entered by player and computer, and a dynamic array is used to store the attacking positions by player and computer
-- Vectors ..........
+- Vectors is used to store the number of user ships left when computer is attacking and eliminate the duplicates so we can figure out if all the targets surrounded the correct hunt is being checked
 - Int data types is used to store difficulty level chosen by the player, input row and column number and etc
 
 3. Dynamic memory management
