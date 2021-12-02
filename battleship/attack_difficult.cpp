@@ -49,7 +49,7 @@ int SetAttackDifficult(int difficulty, int indicator, int load, int &quit){
 
     // check if user wants to load from previous game
     if (load == 1) {
-      load_file(quit_sequence, difficulty, start_player,  indicator, ship_inputted, matrix, matrixComp, recording, recordingComp, ship_position, ship_positionComp, user_attack, comp_attack, count_user, comp_ship_left_last);
+      load_file(quit_sequence, difficulty, start_player,  indicator, ship_inputted, matrix, matrixComp, recording, recordingComp, ship_position, ship_positionComp, user_attack, comp_attack, count_user, comp_ship_left_last, hunt, target_N, target_);
       user_attack_size = count_user - (count_user % 3);
       comp_attack_size = count_comp - (count_comp % 3);
       cout << "Your ship placement board" << endl;
