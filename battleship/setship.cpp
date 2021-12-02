@@ -13,10 +13,8 @@
 
 using namespace std;
 
-
-
 // Check the error for input ship location
-// Input: input row, column, director and flag_user (determine whose turn to play)
+// Input: input row, column, direction and flag_user (determine whose turn to play)
 // Output: false for invalid positions
 bool CheckError(int row, int column, char direction, int flag_user){
 
@@ -49,7 +47,7 @@ bool CheckError(int row, int column, char direction, int flag_user){
     return false;
   }
 
-  //check if there is a ship at the valid row, column and direction input
+  //check if there is a ship at the valid row, column and direction input (repeated input)
   temp_row = row;
   temp_column = column;
   int count = 0;
