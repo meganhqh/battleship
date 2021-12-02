@@ -1,5 +1,5 @@
 // save_load.cpp
-// saving and loading the game status
+// for saving and loading the game status
 
 #include <iostream>
 #include <fstream>
@@ -9,12 +9,10 @@
 
 using namespace std;
 
-
-
 // Save the game progress into a savefile.txt
-// Input: difficulty level, indicator (player sequence), ship_inputted, quit sequence
-// Input: ships location board, recording board, previous attack positions
-// Input: number of times that user/ computer attacks
+// Input: All variables to keep track of if we load the saved game later, such as at which point user quits, diffculty level, whose turn, which player attacks first, the number of ships inputted, 
+// the user and computer game boards and recording boards, the ship placements arrays of user and computer, the attacking position arrays of user and computer,
+// number of attacks of user and computers, number of computer ships left, check for computer attacking positions
 void SaveFilePlacement(int quit_sequence, int difficulty, int start_player, int indicator, int ship_inputted, char matrix[6][6], char matrixComp[6][6], char recording[6][6], char recordingComp[6][6], string ship_position[3][3], string ship_positionComp[3][3], string *&user_attack, string *&comp_attack, int count_user, int count_comp, int comp_ship_left_last, bool hunt, bool target_N, bool target_S, bool target_E, bool target_W){
   ofstream fout;
   fout.open("savefile.txt");
@@ -47,7 +45,6 @@ void SaveFilePlacement(int quit_sequence, int difficulty, int start_player, int 
     for (int j = 0; j < 3; j++)
     fout << ship_positionComp[i][j] << " ";
   }
-  // who starts the game
   if (start_player == 0){
     for (int i = 0; i < indicator/2; i++){
       fout << user_attack[i] << " ";
@@ -68,6 +65,7 @@ void SaveFilePlacement(int quit_sequence, int difficulty, int start_player, int 
 }
 
 // Check the validity of the savefile.txt when loading
+// Output: return 0 if fail, otherwise return 1
 int load_test () {
   string filename = "savefile.txt";
   ifstream fin;
@@ -81,11 +79,10 @@ int load_test () {
 }
 
 
-// Load the game progress from savefile.txt but checking function is removed
-// Input: difficulty level, indicator (player sequence), ship_inputted, quit sequence
-// Input: ships location board, recording board, previous attack positions
-// Input: number of times that user/ computer attacks
-// Output: modify all inputs based on savefile.txt
+// Load the game progress from savefile.txt but checking function is removed, modifying the variables through pass by reference
+// Input: All variables to keep track of if we load the saved game later, such as at which point user quits, diffculty level, whose turn, which player attacks first, the number of ships inputted, 
+// the user and computer game boards and recording boards, the ship placements arrays of user and computer, the attacking position arrays of user and computer,
+// number of attacks of user and computers, number of computer ships left, check for computer attacking positions
 void load_file (int &quit_sequence, int start_player, int &difficulty, int &indicator,  int &ship_inputted, char matrix[6][6], char matrixComp[6][6], char recording[6][6], char recordingComp[6][6], string ship_position[3][3], string ship_positionComp[3][3], string *&user_attack, string *&comp_attack, int &count_user, int &count_comp, int &comp_ship_left_last, bool hunt, bool target_N, bool target_S, bool target_E, bool target_W) {
   string filename = "savefile.txt";
   ifstream fin;
