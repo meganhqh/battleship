@@ -15,7 +15,7 @@ using namespace std;
 
 // Check the error for input ship location
 // Input: input row, column, direction and flag_user (determine whose turn to play)
-// Output: false for invalid positions
+// Output: False for invalid positions
 bool CheckError(int row, int column, char direction, int flag_user){
 
   //check if row or column input out of bound
@@ -79,9 +79,8 @@ bool CheckError(int row, int column, char direction, int flag_user){
 
 
 
-// Change the relevant input position to 'S' and store them in a dynamic array
-// Input: vlid ship input position and direction
-// Output: modify the gameboard according to the valid row, column and direction
+// Change the relevant input position to 'S' on the ship placement or game board, and also store the coordinates in a ship position array
+// Input: a 6x6 grid, an array recording ship position coordinates, valid ship input position and direction
 void WriteShipPosition(char matrix[6][6], string ship_position[3][3],int ship_number, int row, int column, char direction){
   matrix[row][column] = 'S';
   char r, c;
@@ -116,9 +115,9 @@ void WriteShipPosition(char matrix[6][6], string ship_position[3][3],int ship_nu
 }
 
 
-// Set the location of the ship at the early stage
-// Input: row, column and direction
-// Output: print out the gameboard for valid row, column and direction
+// Set the location of the ship in the first part of the game
+// Input: difficulty level, indicator (whose turn), load (wwhether or not we load previous game), quit (whether or not user quits)
+// Output: if user decides to quit, return 1, 0 otherwise
 int SetShips(int difficulty, int indicator, int load, int &quit){
   int flag_user = 1, ship_inputted = 0, quit_sequence = 1;
   int comp_ship_left_last=3;
@@ -126,11 +125,9 @@ int SetShips(int difficulty, int indicator, int load, int &quit){
   // if user decides to continue previous game
   if (load == 1) {
     load_file(quit_sequence, difficulty, start_player, indicator, ship_inputted, matrix, matrixComp, recording, recordingComp, ship_position, ship_positionComp, user_attack, comp_attack, count_user, count_comp, comp_ship_left_last, hunt, target_N, target_S, target_E, target_W);
-    // cout << "Your ship placement board" << endl;
-    // PrintBoard(matrix);
     load = 0;
   }
-  // input the row to place the ship
+
   for (int i = ship_inputted+1;i < 4; i++){
     int row, column, error;
     char direction;
@@ -141,10 +138,11 @@ int SetShips(int difficulty, int indicator, int load, int &quit){
     cout << "Please input the location of the ships. ";
     cout << "[Select 9 to save or quit]" << endl;
     cout << "Ship " << i << ": ";
+    
+    //input row to place the ship
     cin >> row;
 
-    // user allocates 9 as row for ship position
-    // asks if user decides to quit
+    // if user selects '9' and decides to quit, function ends and returns 1
     while(row == 9){
         if (Quit(quit_sequence, difficulty, start_player, indicator, ship_inputted, matrix, matrixComp, recording, recordingComp, ship_position, ship_positionComp, user_attack, comp_attack, count_user, count_comp, comp_ship_left_last, hunt, target_N, target_S, target_E, target_W) == true){
             quit =1;
@@ -159,8 +157,8 @@ int SetShips(int difficulty, int indicator, int load, int &quit){
     }
     // input column to place the ship
     cin >> column;
-    // user allocates 9 as row or column for ship position
-    // asks if user decides to quit
+    
+    // if user selects '9' and decides to quit, function ends and returns 1
     while(row == 9 | column == 9){
         if (Quit(quit_sequence, difficulty, start_player, indicator, ship_inputted, matrix, matrixComp, recording, recordingComp, ship_position, ship_positionComp, user_attack, comp_attack, count_user, count_comp, comp_ship_left_last, hunt, target_N, target_S, target_E, target_W) == true){
             quit =1;
@@ -174,14 +172,15 @@ int SetShips(int difficulty, int indicator, int load, int &quit){
         }
     }
 
-    // both row and column input is not equal to 9 (not quitting)
+    // input direction to place the ship
     cout << "Please choose the direction to place the ship(N, S, E, W). ";
     cout << "[Select 9 to save or quit]" << endl;
     cout << "Direction: ";
-    cin >> direction; // input director to place ship
-    // user allocates 9 as row or column or direction for ship position
-    // asks if user decides to quit
+    cin >> direction; 
+    
     cout << endl;
+    
+    // if user selects '9' and decides to quit, function ends and returns 1
     while(row == 9 | column == 9 | direction == '9'){
         if (Quit(quit_sequence, difficulty, start_player, indicator, ship_inputted, matrix, matrixComp, recording, recordingComp, ship_position, ship_positionComp, user_attack, comp_attack, count_user, count_comp, comp_ship_left_last, hunt, target_N, target_S, target_E, target_W) == true){
             quit =1;
@@ -207,10 +206,10 @@ int SetShips(int difficulty, int indicator, int load, int &quit){
         cout << "Please input the location of the ships. ";
         cout << "[Select 9 to save or quit]" << endl;
         cout << "Ship " << i << ": ";
+        // input row to place the ship
         cin >> row;
 
-        // user allocates 9 as row for ship position
-        // asks if user decides to quit
+        // if user selects '9' and decides to quit, function ends and returns 1
         while(row == 9){
             if (Quit(quit_sequence, difficulty, start_player, indicator, ship_inputted, matrix, matrixComp, recording, recordingComp, ship_position, ship_positionComp, user_attack, comp_attack, count_user, count_comp, comp_ship_left_last, hunt, target_N, target_S, target_E, target_W) == true){
                 quit =1;
@@ -225,8 +224,8 @@ int SetShips(int difficulty, int indicator, int load, int &quit){
         }
         // input column to place the ship
         cin >> column;
-        // user allocates 9 as row or column for ship position
-        // asks if user decides to quit
+      
+        // if user selects '9' and decides to quit, function ends and returns 1
         while(row == 9 | column == 9){
             if (Quit(quit_sequence, difficulty, start_player, indicator, ship_inputted, matrix, matrixComp, recording, recordingComp, ship_position, ship_positionComp, user_attack, comp_attack, count_user, count_comp, comp_ship_left_last, hunt, target_N, target_S, target_E, target_W) == true){
                 quit =1;
@@ -240,14 +239,14 @@ int SetShips(int difficulty, int indicator, int load, int &quit){
             }
         }
 
-        // both row and column input is not equal to 9 (not quitting)
         cout << "Please choose the direction to place the ship(N, S, E, W). ";
         cout << "[Select 9 to save or quit]" << endl;
         cout << "Direction: ";
-        cin >> direction; // input director to place ship
-        // user allocates 9 as row or column or direction for ship position
-        // asks if user decides to quit
+        // input director to place ship
+        cin >> direction; 
         cout << endl;
+      
+         // if user selects '9' and decides to quit, function ends and returns 1
         while(row == 9 | column == 9 | direction == '9'){
             if (Quit(quit_sequence, difficulty, start_player, indicator, ship_inputted, matrix, matrixComp, recording, recordingComp, ship_position, ship_positionComp, user_attack, comp_attack, count_user, count_comp, comp_ship_left_last, hunt, target_N, target_S, target_E, target_W) == true){
                 quit =1;
@@ -268,7 +267,7 @@ int SetShips(int difficulty, int indicator, int load, int &quit){
 
         CheckError(row, column, direction, flag_user);
         //check if there is a ship on own board
-        // increase error by 1
+        //increase error by 1
         if (matrix[row][column] == 'S'){
           error +=1;
         }
@@ -280,12 +279,13 @@ int SetShips(int difficulty, int indicator, int load, int &quit){
 }
 
 
-// Set random input by Computer
+// Set random ship position input by Computer
 void SetCompShips(){
   int error, x, y;
   int flag_user = 0;
   char direction;
   char letters[] = "NSEW";
+  //set seed and randomise computer input for row, column and direction
   srand(time(NULL));
   for (int i = 1; i < 4; i++){
     x = rand() % rows;
