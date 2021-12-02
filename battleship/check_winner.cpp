@@ -1,3 +1,6 @@
+//check_winner.cpp
+//this program determines the number of ships left in opponent's board and also determine a winner (whoever makes opponent's ship count go to zero first).
+
 #include <iostream>
 #include <string>
 #include "check_winner.h"
@@ -5,15 +8,13 @@
 
 using namespace std;
 
-
-
-// Check who is the winner by eliminating from the dynamic array according to the attack position
+// Check who is the winner by determining the number of ships left in both player's board
 // Input: valid attacking position, indicator (whose turn to play the game)
-// Output: winner in the game?
+// Output: number of ships left in computer's board
 int CheckWinner(string position, int indicator){
   int comp_ship_left_last;
 
-  // change ship position board to 'N' when the attacks the ship correctly
+  // change ship position array to 'N' when the opponent attacks the ship correctly
   for (int i = 0; i < 3; i++){
     for (int j = 0; j < 3; j++){
       if (indicator % 2 == 0){
@@ -43,7 +44,7 @@ int CheckWinner(string position, int indicator){
       }
     }
 
-    // check the number of ships left based on the sink ship
+    // check the number of ships left based on how many ships are being sunk (all spaces occupy by the ship is hit)
     if (indicator % 2 == 0){
       if (sink_ship == 3){
         comp_ship_left = comp_ship_left - 1;
@@ -55,17 +56,13 @@ int CheckWinner(string position, int indicator){
     }
   }
 
-  // output the final number of ships lift
-  if (indicator % 2 == 0){
-    //cout << "Number of ships left: " << comp_ship_left << endl;
-    //cout << endl;
-  } else{
+  // output the final number of ships left
+  if (indicator % 2 != 0){
     cout << "Number of ships left: " << user_ship_left << endl;
     cout << endl;
   }
 
-  // if all 3 ships are being hit
-  // if all 3 ships are being hit
+  // if all 3 user ships are sunk first, computer wins and a sad face prints out
    if (user_ship_left == 0){
      cout << "     a$$$$$$$$$$$a" << endl;
      cout << "   a$$$$$$$$$$$$$$$a" << endl;
@@ -81,6 +78,7 @@ int CheckWinner(string position, int indicator){
      cout << endl;
      cout << "You lose! Computer wins!" << endl;
      winner = true;
+   // if all 3 computer ships are sunk first, user wins and a cute cat prints out
    } else if (comp_ship_left == 0){
      cout << "                         _" << endl;
      cout << "                        / )" << endl;
