@@ -25,7 +25,7 @@ void print_difficulty (int &difficulty);
 void PrintBoard(char matrix[6][6]);
 
 // Determine which player to attack first
-// Input: sequence
+// Input: indicator (who to start)
 // Output: indicator is even when player starts, otherwise odd
 void print_player_sequence(int &indicator);
 
