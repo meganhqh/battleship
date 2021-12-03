@@ -116,7 +116,7 @@ void WriteShipPosition(char matrix[6][6], string ship_position[3][3],int ship_nu
 
 
 // Set the location of the ship in the first part of the game
-// Input: difficulty level, indicator (whose turn), load (wwhether or not we load previous game), quit (whether or not user quits)
+// Input: difficulty level, indicator (whose turn), load (whether or not we load previous game), quit (whether or not user quits)
 // Output: if user decides to quit, return 1, 0 otherwise
 int SetShips(int difficulty, int indicator, int load, int &quit){
   int flag_user = 1, ship_inputted = 0, quit_sequence = 1;
