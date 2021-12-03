@@ -353,7 +353,7 @@ int SetAttackDifficult(int difficulty, int indicator, int load, int &quit){
         }
 
         // if all the targets are set to false, this indicates that a ship is sunk
-        // hunt will be reset to false to random guess a succesful hit again
+        // hunt will be reset to false to random guess a successful hit again
         if (target_N == false && target_S == false && target_W == false && target_E == false){
           hunt = false;
           count = 1;
