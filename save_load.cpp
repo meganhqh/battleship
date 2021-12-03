@@ -114,8 +114,12 @@ void load_file (int &quit_sequence, int start_player, int &difficulty, int &indi
     for (int j = 0; j < 3; j++)
       fin >> ship_positionComp[i][j];
   }
+  
+  //new pointer to store dynamic array
   string *a = new string[36];
   string *b = new string[36];
+  
+  // depends on who start the attacking sequence
   if (start_player == 0){
     for (int i = 0; i < indicator/2; i++){
       fin >> a[i];
