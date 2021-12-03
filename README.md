@@ -39,7 +39,7 @@
 - There are 3 ships for player to place on the gameboard. Each ship will occupy 3 spaces on the gameboard.
 
 **Game Rules**
-- Player will first place the 3 ships on the game board by inputting the row and column number of the first position of the ship, followed by the orientation (North, South, East, West) of the ship.
+- Player will first place the 3 ships on the game board by inputting the row and column number of the first position of the ship, followed by the orientation (North, South, East, West) of the ship. Diagonal placement is not allowed for declaring as a ship.
 - E.g. 1, 2, W means the first position of the ship have coordinate (1,2) and the orientation would be west so the second and third position of the ship have coordinate (1,1) and (1,0) respectively. (as shown in the above gameboard)
 - Ships cannot be placed overlapping with each other. (E.g. placing another ship at coordinate (1,1) again)
 - The location of ships on the game board for both computer and player is hidden from each other.
