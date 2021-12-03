@@ -291,6 +291,7 @@ void SetCompShips(){
     x = rand() % rows;
     y = rand() % columns;
     direction = letters[rand() % 4];
+    //check if there are errors with the input
     while ((CheckError(x,y, direction, flag_user) == false) || (error == 1)){
       error = 0;
       x = rand() % rows;
