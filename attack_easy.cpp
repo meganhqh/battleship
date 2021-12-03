@@ -51,6 +51,7 @@ int SetAttack(int difficulty, int indicator, int load, int &quit){
       cout << "[Select 9 to save or quit]" << endl;
       cout << "Location: ";
       cin >> row;
+      
       // check if user wants to quit with 9 in input row
       while(row == 9){
         if (Quit(quit_sequence, difficulty, start_player, indicator, ship_inputted, matrix, matrixComp, recording, recordingComp, ship_position, ship_positionComp, user_attack, comp_attack, count_user, count_comp,comp_ship_left_last, hunt, target_N, target_S, target_E, target_W) == true){
@@ -65,6 +66,7 @@ int SetAttack(int difficulty, int indicator, int load, int &quit){
         }
       }
       cin >> column;
+      
       // check if user wants to quit with 9 in input column
       while(column == 9){
         if (Quit(quit_sequence, difficulty, start_player, indicator, ship_inputted, matrix, matrixComp, recording, recordingComp, ship_position, ship_positionComp, user_attack, comp_attack, count_user,count_comp, comp_ship_left_last, hunt, target_N, target_S, target_E, target_W) == true){
@@ -170,6 +172,7 @@ int SetAttack(int difficulty, int indicator, int load, int &quit){
         duplicate = 0;
         comp_ship_left=3;
     }
+    
     // clear the screen after two players have played their turn
     if(attack_num % 2 == 0 && duplicate_last == 0 && incorrect!= 1){
       string str;
@@ -177,6 +180,7 @@ int SetAttack(int difficulty, int indicator, int load, int &quit){
       pause();
       system("clear");
     }
+    
     //print a section divider after one player has played their turn
     if(attack_num % 2 != 0 && duplicate_last == 0 && incorrect != 1){
       print_section_divider();
