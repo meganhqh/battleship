@@ -50,7 +50,7 @@
 - The first player to sink all 3 ships of the opponent will win the game.
 
 **Available Features**
-1. Generation of random game sets or events
+**1. Generation of random game sets or events**
 - Player can choose one of the 2 difficulty levels which are based on computer's hitting moves
   - Easy = 1
     - Placement move  
@@ -65,7 +65,7 @@
       -  Computer will identify the 4 orientation around a successful hit to facilitate the hitting for the next moves.
 
 
-2. Data structures for storing game status
+**2. Data structures for storing game status**
 - Static array is used to store computer and player game board and recording board. 
 - Static array is used to store the ship placement positions entered by player and computer.
 - Dynamic array is used to store the increasing attacking positions by player and computer.
@@ -75,14 +75,14 @@
 - String data types is used to store the input interger row and column number as string.
 - Char data types used to store the computer and player game board and recording board.
 
-3. Dynamic memory management
+**3. Dynamic memory management**
 - The number of attacking positions inputted during the game will depend on how fast there is a winner of the game, which we do not know initially. Thus, to record the attacking positions in an array, a dynamic array is used so that we could increase the size the dynamic array to store more attacking positions during the game.
 
-4. File input/output
+**4. File input/output**
 - The player can choose to quit at any time, and the current status of the game will be stored in a line separated by spaces in savefile.txt.
 - Player can have the option to resume the last saved game, or to start a new game in the beginning. If player chooses to load from previous game, the game status will restore by reading savefile.txt.
 
-5. Program codes in multiple files
+**5. Program codes in multiple files**
 - The program is divided into multiple functions and stored into different files.
 - The programs involve in our text-based game:
   - battleship.cpp: Main function which manages the flow of the game
@@ -96,7 +96,7 @@
 - Makefile is used to generate the program from all the files that are needed for our game
 
 
-Compilation and Execution
+**Compilation and Execution**
 - Download the makefile and the source files into a single folder. The commands are:
 - Compilation: make battleship
 - Execution: ./battleship
