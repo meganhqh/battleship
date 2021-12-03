@@ -56,6 +56,7 @@ void print_instructions () {
 
 // Allows the player to choose difficulty level, modifying the level according to the chosen level through pass by reference
 // Input: difficulty level
+// Output: modify the level according to the chosen level
 void print_difficulty (int &difficulty) {
   cout << "Please select your difficulty:" << endl;
   cout << "1 - Easy" << endl;
@@ -72,6 +73,7 @@ void print_difficulty (int &difficulty) {
 
 // Print out our game and recording boards
 // Input: a 6x6 grid
+// Output: gameboard with ship position
 void PrintBoard(char matrix[6][6]){
   cout << "  ";
   for (int i = 0; i<6; i++){
@@ -89,7 +91,8 @@ void PrintBoard(char matrix[6][6]){
 }
 
 // Determine which player to attack first, changing indicator to even when player starts, otherwise odd
-// Input: indicator 
+// Input: indicator (who to start) 
+// Output: indicator is even when player starts, otherwise odd
 void print_player_sequence(int &indicator){
   int sequence;
   cout << endl << "Do you want to attack first?" << endl;
@@ -168,6 +171,7 @@ bool AttackShips(int row, int column, int indicator){
 
 // Grow array to store more attacking position (dynamic array)
 // Input: pointer, array size, number to grow
+// Output: new array with updated array size
 void grow_attack_position(string * &ap, int &ap_size, int n){
 	// create a new dynamic array with a new size = old size + n
 	string * ap_new = new string[ap_size + n];
