@@ -74,6 +74,7 @@ int main(){
       }
       load_temp = 1;
 
+      // check if user wants to load from previous saved game
       if (load == 1) {
         //load_test will return 0 if fail to run and 1 otherwise
         load = load_test();
@@ -85,7 +86,7 @@ int main(){
       }
     }
 
-    // If saved file not loaded, allow player to choose difficulty level and initialise start board
+    // If saved file not loaded, allow player to choose difficulty level and initialise start board (reset the game)
     if (load != 1) {
       print_difficulty(difficulty);
       StartBoard();
