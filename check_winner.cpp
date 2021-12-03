@@ -78,6 +78,7 @@ int CheckWinner(string position, int indicator){
      cout << endl;
      cout << "You lose! Computer wins!" << endl;
      winner = true;
+     
    // if all 3 computer ships are sunk first, user wins and a cute cat prints out
    } else if (comp_ship_left == 0){
      cout << "                         _" << endl;
