@@ -50,6 +50,7 @@
 - The first player to sink all 3 ships of the opponent will win the game.
 
 **Available Features**
+
 **1. Generation of random game sets or events**
 - Player can choose one of the 2 difficulty levels which are based on computer's hitting moves
   - Easy = 1
